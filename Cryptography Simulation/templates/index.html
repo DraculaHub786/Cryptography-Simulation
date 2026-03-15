@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptography Simulation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+    
+    <div class="app-container glass-container">
+        <header class="glow-header">
+            <h1>CryptoSimulation</h1>
+            <p>Interactive Cryptography Visualizer</p>
+        </header>
+
+        <main>
+            <section class="controls-panel glass-panel">
+                <div class="control-group">
+                    <label for="cipher-select" class="gradient-text">Algorithm</label>
+                    <select id="cipher-select" class="modern-input">
+                        <optgroup label="Encryption">
+                            <option value="caesar">Caesar Cipher</option>
+                            <option value="vigenere">Vigenère Cipher</option>
+                            <option value="aes">AES-128 (ECB)</option>
+                        </optgroup>
+                        <optgroup label="Hashing">
+                            <option value="md5">MD5</option>
+                            <option value="sha256">SHA-256</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="control-group" id="operation-group">
+                    <label class="gradient-text">Operation</label>
+                    <div class="toggle-switch">
+                        <input type="radio" id="encrypt-radio" name="operation" value="encrypt" checked>
+                        <label for="encrypt-radio">Encrypt</label>
+                        <input type="radio" id="decrypt-radio" name="operation" value="decrypt">
+                        <label for="decrypt-radio">Decrypt</label>
+                    </div>
+                </div>
+
+                <div class="control-group cipher-key-group" id="key-group">
+                    <label id="key-label" for="key-input" class="gradient-text">Shift Value (Number)</label>
+                    <input type="text" id="key-input" class="modern-input" placeholder="e.g., 3" value="3">
+                </div>
+
+                <div class="control-group">
+                    <label for="input-text" class="gradient-text">Input Data</label>
+                    <textarea id="input-text" class="modern-input textarea-glow" rows="4" placeholder="Enter data here..."></textarea>
+                </div>
+
+                <button id="process-btn" class="primary-btn glow-btn">
+                    <span class="btn-text">Simulate</span>
+                    <span class="btn-icon">⚡</span>
+                </button>
+            </section>
+
+            <section class="visualization-panel glass-panel">
+                <div class="panel-header">
+                    <h2 class="gradient-text">Simulation Engine</h2>
+                    <div class="speed-control">
+                        <label for="speed-slider">Speed:</label>
+                        <input type="range" id="speed-slider" min="100" max="2000" value="800" step="100" dir="rtl">
+                    </div>
+                </div>
+                
+                <div id="simulation-area" class="simulation-area">
+                    <div class="placeholder-text">Enter text and click simulate to begin.</div>
+                </div>
+
+                <div class="result-area">
+                    <label>Final Output:</label>
+                    <div id="final-output" class="output-box">-</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
